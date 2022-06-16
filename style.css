@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #EEF9BF;
+  }
+
+.outtertop{
+    width: auto;
+    height: auto;
+}
+.top{ 
+   width: 100%;
+   display: flex;
+   margin-inline: auto;
+   padding: 40px 20px;
+   background-color: #EEF9BF;
+}
+
+.top > div{
+    font-size: 56px;
+    font-weight: 700;
+    color: #75B79E;
+    margin-inline: auto;
+}
+
+.main{
+    background-color: #EEF9BF;
+    width: auto;
+    height: 100%;
+}
+
+.seven-cards{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.card{
+    width: 117px;
+    height: 146px;
+    position: relative;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+
+
+.front-face img{
+    width: 90px;
+}
+
+.back-face img{
+    width: 60px;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .back-face {
+    transform: rotateY(0deg);
+  }
+
+  .card:hover .front-face {
+    transform: rotateY(-180deg);
+  }
+
+
+
+@media(max-width: 1034px) and (min-width:615px){
+
+    .seven-cards{
+        padding: 50px;
+    }
+   .card{
+    width: calc(100% * (1/4) - 10px - 1px);
+   }
+}
+
+
+@media (max-width: 614px) {
+    .top > div {
+      font-size: 36px;
+      margin-inline: auto;
+    }
+
+    .seven-cards{
+        flex-direction: column;
+    }
+   
+
+
+  }
+
+
+    
