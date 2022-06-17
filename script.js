@@ -1,7 +1,7 @@
 let animatedCards = ["img/bobrossparrot.gif", "img/explodyparrot.gif", "img/fiestaparrot.gif","img/metalparrot.gif", "img/revertitparrot.gif","img/tripletsparrot.gif","img/unicornparrot.gif"];
 
 function comparador() { 
-	return Math.random() - 0.5; 
+   return Math.random() - 0.5; 
 }
 
 animatedCards.sort(comparador);
@@ -34,8 +34,8 @@ let list = [];
         document.querySelector(".seven-cards").innerHTML += cardsTemplate;
     };
 
-    let sevencards = document.querySelector('.seven-cards');
-    for (let i = sevencards.children.length; i >= 0; i--) {
+    let sevencards = document.querySelector('.seven-cards'); 
+    for (let i = sevencards.children.length; i >= 0; i--) {  //This loop shuffles ALL of the cards 
         sevencards.appendChild(sevencards.children[Math.random() * i | 0]);
     }
 }
@@ -55,8 +55,8 @@ function askHowManyCardsWantsToPlay(){
 
 function play(element){
 
-    
 
 
 
-}
+
+};
