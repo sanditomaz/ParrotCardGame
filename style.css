@@ -46,6 +46,7 @@
     width: 117px;
     height: 146px;
     position: relative;
+    cursor: pointer;
 }
 
 .face {
@@ -86,7 +87,7 @@
 
 
 
-@media(max-width: 1034px) and (min-width:615px){
+@media(max-width: 1038px) and (min-width:615px){
 
     .seven-cards{
         padding: 50px;
@@ -106,10 +107,8 @@
     .seven-cards{
         flex-direction: column;
     }
-   
 
-
-  }
+}
 
 
     
