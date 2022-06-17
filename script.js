@@ -17,8 +17,8 @@ let list = [];
         list.push(animatedCards[i]);
         if( i === numberOfCards){
             break;
-        }
-    }
+        };
+    };
 
     for(let i=0; i < numberOfCards; i++){
         let cardsTemplate = ` 
@@ -40,13 +40,12 @@ let list = [];
     }
 }
 
-
 function askHowManyCardsWantsToPlay(){
     let howManyCards = Number (prompt("How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."));
 
     while(howManyCards < 4 || howManyCards > 14 || howManyCards%2 !== 0){
         howManyCards = Number (prompt("How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."));
-    }
+    };
 
     numberOfCards = howManyCards/2;
 

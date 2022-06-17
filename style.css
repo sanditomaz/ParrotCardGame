@@ -94,8 +94,8 @@
     }
    .card{
     width: calc(100% * (1/4) - 10px - 1px);
-   }
-}
+   };
+};
 
 
 @media (max-width: 614px) {
@@ -106,9 +106,9 @@
 
     .seven-cards{
         flex-direction: column;
-    }
+    };
 
-}
+};
 
 
     
