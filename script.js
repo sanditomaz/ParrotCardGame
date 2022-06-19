@@ -7,20 +7,19 @@ let animatedCards = [
     "tripletsparrot",
     "unicornparrot"
   ];
+
   
-  function comparador() {
+function comparador() {
     return Math.random() - 0.5;
-  }
-  
+}
   animatedCards.sort(comparador);
-  
-  let amountOfCards = animatedCards.length;
-  
-  function createCards(numberOfCards) {
+
+
+
+function createCards(numberOfCards) {
     let list = [];
   
     for (let i = 0; i < animatedCards.length; i++) {
-      //This loop stores the shuffled cards in array list.
       if (list === null) {
         animatedCards.sort(comparador);
       }
@@ -28,16 +27,18 @@ let animatedCards = [
       if (i === numberOfCards) {
         break;
       }
-    }
+    }//This loop above stores the shuffled cards in array list.
+
   
     for (let i = 0; i < numberOfCards; i++) {
       let cardsTemplate = ` 
-          <li class="card" onclick ="play(this)">
+        <li class="card" onclick ="play(this)">
+              <div class="back-face face ">
+                 <img src = "img/${list[i]}.gif">
+              </div>
+
               <div class="front-face face">
                   <img class = "frontimg" src="img/front.png">
-              </div>
-              <div class="back-face face turn">
-                  <img class = "${list[i]}" src = "img/${list[i]}.gif">
               </div>
           </li>`;
       document.querySelector("ul").innerHTML += cardsTemplate;
@@ -45,74 +46,58 @@ let animatedCards = [
     }
   
     let sevencards = document.querySelector("ul");
+
     for (let i = sevencards.children.length; i >= 0; i--) {
-      //This loop shuffles ALL of the cards
       sevencards.appendChild(sevencards.children[(Math.random() * i) | 0]);
-    }
-  }
+    }//This loop above shuffles ALL of the cards
+}
+
   
-  askHowManyCardsWantsToPlay();
-  createCards();
+askHowManyCardsWantsToPlay();
+createCards();
+
+
+
+function askHowManyCardsWantsToPlay() {
+    //let howManyCards = Number(
+    //   prompt(
+    //     "How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."
+    //   )
+    // );
   
-  function askHowManyCardsWantsToPlay() {
-    let howManyCards = Number(
-      prompt(
-        "How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."
-      )
-    );
+    // while (howManyCards < 4 || howManyCards > 14 || howManyCards % 2 !== 0) {
+    //   howManyCards = Number(
+    //     prompt(
+    //       "How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."
+    //     )
+    //   );
+    // }
   
-    while (howManyCards < 4 || howManyCards > 14 || howManyCards % 2 !== 0) {
-      howManyCards = Number(
-        prompt(
-          "How many cards do you want to play with?\n Pick even numbers from 4 to 14 only."
-        )
-      );
-    }
-  
-    let numberOfCards = howManyCards / 2;
-  
+    //let numberOfCards = howManyCards / 2;
+    let numberOfCards = 2;
     createCards(numberOfCards);
-  }
-  
-  function compareCards(element) {
-    let image = element.querySelectorAll(".back-face > img");
-    for (let i = 0; i < image.length; i++) {
-      if (image[i] === image[i + 1]) {
-        return true;
-      }
+}
+
+
+
+function play(clickedCard){
+    clickedCard.classList.add("turn"); //
+    const cardsUp= document.querySelectorAll(".turn"); //
+        
+    if(cardsUp.length === 2){ 
+        compareCards(cardsUp); //
     }
-    setTimeout(play, 1000);
-  }
-  
-  function turnsCardUp(elemento) {
-    return elemento.classList.remove("turn");
-  }
-  
-  function turnsCardDown(elemento) {
-    let element = [];
-    for (let i = 0; i < elemento.length; i++) {
-      element.push(elemento[i].classList.add("turn"));
+}
+
+
+
+function compareCards(cards){ //
+    const firstCardImage = cards[0].querySelector(".back-face img"); //
+    const secondCardImage =  cards[1].querySelector(".back-face img");
+    
+    if(firstCardImage.src === secondCardImage.src){ //Compare Srcs
+        return;
     }
-    return element;
-  }
-  
-  function play() {
-    let isClicked = document.querySelectorAll(".card .turn");
-    console.log(isClicked);
-    let compare = [];
-  
-    for (let i = 0; i < isClicked.length; i++) {
-      turnsCardUp(isClicked[i]);
-      if (i < 2) {
-        compare.push(isClicked[i]);
-      }
-      if (i === 2) {
-        compareCards(compare);
-      }
-  
-      if (!compareCards()) {
-        turnsCardDown(compare);
-      }
-    }
-  }
-  
+    cards[0].classList.remove("turn"); //
+    cards[1].classList.remove("turn");
+}

@@ -74,15 +74,15 @@
     width: 60px;
 }
 
-.front-face {
+.back-face {
   transform: rotateY(180deg);
 }
 
-.front-face{
+.card.turn .back-face {
   transform: rotateY(0deg);
 }
 
-.turn{
+.card.turn .front-face {
   transform: rotateY(-180deg);
 }
 
