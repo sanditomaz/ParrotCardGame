@@ -31,7 +31,7 @@ function createCards(numberOfCards) {
       if (i === numberOfCards) {
         break;
       }
-    }//This loop above stores the shuffled cards in array list.
+    }
 
   
     for (let i = 0; i < numberOfCards; i++) {
@@ -53,7 +53,7 @@ function createCards(numberOfCards) {
 
     for (let i = sevenCards.children.length; i >= 0; i--) {
       sevenCards.appendChild(sevenCards.children[(Math.random() * i) | 0]);
-    }//This loop above shuffles ALL of the cards
+    }
 }
 
   
@@ -83,33 +83,37 @@ function askHowManyCardsWantsToPlay() {
 
 
 function play(clickedCard){
-    clickedCard.classList.add("turn"); //
-    cardsUp= document.querySelectorAll(".turn"); //    
+    clickedCard.classList.add("turn"); 
+    cardsUp= document.querySelectorAll(".turn");   
 
     if(cardsUp.length === 2){ 
-        compareCards(cardsUp); //
+        compareCards(cardsUp); 
     }
+    
     endGame();
 }
 
 let numberOfRounds = 2;
 
-function compareCards(cards){ //
+function compareCards(cards){ 
     if(cards){
         numberOfRounds = numberOfRounds + 2;
     }
 
-    const firstCardImage = cards[0].querySelector(".back-face img"); //
+    const firstCardImage = cards[0].querySelector(".back-face img"); 
     const secondCardImage =  cards[1].querySelector(".back-face img");
     
-    if(firstCardImage.src === secondCardImage.src){ //Compare Srcs
+    if(firstCardImage.src === secondCardImage.src){ 
         return;
     }
 
+    setTimeout(unflip(cards),1000);
+}
+
+  function unflip(cards){
     cards[0].classList.remove("turn"); 
     cards[1].classList.remove("turn");
-    setTimeout(compareCards, 1000, );
-}
+  }
 
 
  function endGame(){
@@ -118,8 +122,9 @@ function compareCards(cards){ //
         alert(`Congratulations!! 🎉🎉🎉\n\nYou won the game in ${numberOfRounds} rounds! 👏👏`);
         restart();
     }
-    
 }
+
+
 
 function restart(){
     cont = prompt("Would you like to play again? 🕹️🕹️\n\nType 'sim' for a yes or 'não' for a no, then watch the magic happen. 🤞\n");
