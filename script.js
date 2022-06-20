@@ -87,7 +87,7 @@ function play(clickedCard){
     cardsUp= document.querySelectorAll(".turn");   
 
     if(cardsUp.length === 2){ 
-        compareCards(cardsUp); 
+        setTimeout(compareCards(cardsUp),1000); 
     }
     
     endGame();
@@ -99,31 +99,31 @@ function compareCards(cards){
     if(cards){
         numberOfRounds = numberOfRounds + 2;
     }
-
+    
     const firstCardImage = cards[0].querySelector(".back-face img"); 
     const secondCardImage =  cards[1].querySelector(".back-face img");
     
     if(firstCardImage.src === secondCardImage.src){ 
         return;
     }
-
-    setTimeout(unflip(cards),1000);
+    unflip(cards);
 }
 
   function unflip(cards){
     cards[0].classList.remove("turn"); 
     cards[1].classList.remove("turn");
+    console.log(cards)
+    console.log(cards)
   }
 
 
  function endGame(){
-   
+   console.log()
     if(cardsUp.length  ===  globalNumberOfCards ){
         alert(`Congratulations!! 🎉🎉🎉\n\nYou won the game in ${numberOfRounds} rounds! 👏👏`);
-        restart();
+        restart()
     }
 }
-
 
 
 function restart(){
