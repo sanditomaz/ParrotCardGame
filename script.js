@@ -80,46 +80,51 @@ function askHowManyCardsWantsToPlay() {
     
     createCards(numberOfCards);
 }
+let test = 0;
 
-
-function play(clickedCard){
+function play(clickedCard){ 
+  if(document.querySelectorAll.length < 2){
+ 
     clickedCard.classList.add("turn"); 
+  }
     cardsUp= document.querySelectorAll(".turn");   
 
     if(cardsUp.length === 2){ 
-        setTimeout(compareCards(cardsUp),1000); 
+        compareCards(cardsUp); 
     }
-    
-    endGame();
+    endGame();  
 }
 
-let numberOfRounds = 2;
+let numberOfRounds = 0;
+
 
 function compareCards(cards){ 
     if(cards){
-        numberOfRounds = numberOfRounds + 2;
+        numberOfRounds+=2;
     }
     
     const firstCardImage = cards[0].querySelector(".back-face img"); 
     const secondCardImage =  cards[1].querySelector(".back-face img");
     
     if(firstCardImage.src === secondCardImage.src){ 
+        cards[0].classList.add("turn2");
+        cards[1].classList.add("turn2");
+        cards[0].classList.remove("turn"); 
+        cards[1].classList.remove("turn");
         return;
-    }
-    unflip(cards);
-}
-
-  function unflip(cards){
-    cards[0].classList.remove("turn"); 
-    cards[1].classList.remove("turn");
-    console.log(cards)
-    console.log(cards)
+    }else{
+      setTimeout(function () {
+        cards[0].classList.remove("turn"); 
+        cards[1].classList.remove("turn");
+      }, 1000);
   }
+ 
+}
 
 
  function endGame(){
    console.log()
-    if(cardsUp.length  ===  globalNumberOfCards ){
+    if(document.querySelectorAll(".turn2").length  ===  globalNumberOfCards ){
         alert(`Congratulations!! 🎉🎉🎉\n\nYou won the game in ${numberOfRounds} rounds! 👏👏`);
         restart()
     }

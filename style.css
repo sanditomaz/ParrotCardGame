@@ -85,6 +85,14 @@
   transform: rotateY(-180deg);
 }
 
+.card.turn2 .back-face {
+  transform: rotateY(0deg);
+}
+
+.card.turn2 .front-face {
+  transform: rotateY(-180deg);
+}
+
 
 /* ---------  Responsiviness  ------------ */
 
